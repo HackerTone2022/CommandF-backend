@@ -75,4 +75,11 @@ public class EmpDTO {
         this.leave_work=leave_work;
 
     }
+
+    public EmpDTO(Long emp_id, String attend, String leave_work) {
+        this.emp_id=emp_id;
+        this.attend=attend;
+        this.leave_work=leave_work;
+
+    }
 }

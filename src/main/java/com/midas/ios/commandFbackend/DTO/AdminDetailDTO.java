@@ -19,9 +19,9 @@ public class AdminDetailDTO {
 
     private String name;
     private String Today;
+
     ArrayList < String > DoW_attend = new ArrayList < String > ();
     ArrayList < String > Dow_leave = new ArrayList < String > ();
-    ArrayList < String > Dow_work = new ArrayList < String > ();
 
 
 
