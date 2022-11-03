@@ -24,10 +24,6 @@ public class loginController {
         this.loginService=loginService;
     }
 
-    @GetMapping("/home")
-    public String Home(){
-        return "";
-    }
 
     @GetMapping("/next")
     public String Next(){
@@ -59,7 +55,7 @@ public class loginController {
         if(Objects.equals(idPasswordDTO.getPassword(), loginDTO.getPassword()))
         {return "redirect:/account/next";}
 
-        else{return "redirect:/account/Home";}
+        else{return "redirect:/home";}
     }
 
 

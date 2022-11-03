@@ -1,6 +1,7 @@
 package com.midas.ios.commandFbackend.Controller;
 
 
+import com.midas.ios.commandFbackend.DTO.ApplyDTO;
 import com.midas.ios.commandFbackend.DTO.EmpDTO;
 import com.midas.ios.commandFbackend.DTO.LeaveDTO;
 import com.midas.ios.commandFbackend.Service.EmpService;
@@ -52,5 +53,20 @@ public class EmpController {
         System.out.println(response.toString());
         return "redirect:/";
     }
+
+    @PostMapping("/apply")
+    public String Apply(@Valid @RequestBody ApplyDTO applyDTO){
+        try {
+            if (applyDTO.isHome_apply()) empService.applyWorkFromHome(applyDTO.getEmp_id());
+            if (applyDTO.isAbsent_apply()) empService.applyAbsent(applyDTO.getEmp_id());
+            if (applyDTO.isLeave_apply()) empService.applyLeave(applyDTO.getEmp_id());
+        }catch (Exception e){
+            e.printStackTrace();
+            throw e;
+        }finally {
+            return "redirect:/";
+        }
+    }
+
 
 }
