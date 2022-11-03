@@ -2,6 +2,7 @@ package com.midas.ios.commandFbackend.Controller;
 
 
 import com.midas.ios.commandFbackend.DTO.EmpDTO;
+import com.midas.ios.commandFbackend.DTO.LeaveDTO;
 import com.midas.ios.commandFbackend.Service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,25 +30,27 @@ public class EmpController {
     }
 
     @PostMapping("/attend")
-    public ResponseEntity<EmpDTO> attend(@Valid @RequestBody EmpDTO empDTO) {
+    public String attend(@Valid @RequestBody EmpDTO empDTO) {
 
         Long id = empDTO.getId();
         Long fk_emp_id = empDTO.getEmp_id();
-        LocalTime attend = LocalTime.now();
-        LocalTime leave_work = null;
+        String attend = empDTO.getAttend();
+        String leave_work = null;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date(System.currentTimeMillis());
+        Date work_date = new Date(System.currentTimeMillis());
 
-        System.out.printf(empDTO.toString());
+        EmpDTO response = empService.Attend(id,fk_emp_id,attend,leave_work,work_date);
+        System.out.println(response.toString());
 
-        EmpDTO response = empService.Attend(id,fk_emp_id,attend,leave_work,date);
-
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
+        return "redirect:/";
     }
 
     @PostMapping("/leave")
-    public EmpDTO leaveWork(@Valid @RequestBody EmpDTO empDTO) {
-        return empService.leaveWork(empDTO.getEmp_id(), empDTO.getLeave_work());
+    public String leaveWork(@Valid @RequestBody LeaveDTO leaveDTO) {
+
+        EmpDTO response = empService.leaveWork(leaveDTO.getEmp_id(), leaveDTO.getLeave_work());
+        System.out.println(response.toString());
+        return "redirect:/";
     }
 
 }

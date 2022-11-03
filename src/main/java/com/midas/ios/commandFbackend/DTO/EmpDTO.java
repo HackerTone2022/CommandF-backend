@@ -28,20 +28,20 @@ public class EmpDTO {
     @Column(name = "fk_emp_id")
     private Long emp_id;
 
-    private LocalTime attend;
-    private LocalTime leave_work;
+    private String attend;
+    private String leave_work;
 
-    private Date date;
-
-
-
-    private boolean home;
+    private Date work_date;
 
 
-    private  boolean absent;
+
+    private boolean is_home;
 
 
-    private  boolean leave;
+    private  boolean is_absent;
+
+
+    private  boolean is_leave;
 
 
 
@@ -53,14 +53,14 @@ public class EmpDTO {
 
     private  boolean leave_apply;
 
-    public EmpDTO(Long id, Long fk_emp_id, LocalTime attend, Date date) {
+    public EmpDTO(Long id, Long fk_emp_id, String attend, Date work_date) {
         this.id=id;
         this.emp_id=fk_emp_id;
         this.attend=attend;
-        this.date=date;
+        this.work_date=work_date;
     }
 
-    public EmpDTO(Long emp_id, LocalTime leave_work) {
+    public EmpDTO(Long emp_id, String leave_work) {
         this.emp_id=emp_id;
         this.leave_work=leave_work;
     }

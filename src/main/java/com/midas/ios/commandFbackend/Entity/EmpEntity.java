@@ -28,20 +28,20 @@ public class EmpEntity {
     @Column(name = "fk_emp_id")
     private Long emp_id;
 
-    private LocalTime attend;
-    private LocalTime leave_work;
+    private String attend;
+    private String leave_work;
 
-    private Date date;
+    private Date work_date;
 
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private boolean home;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  boolean absent;
+    private boolean is_home;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  boolean leave;
+    private  boolean is_absent;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  boolean is_leave;
 
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,14 +54,14 @@ public class EmpEntity {
     private  boolean leave_apply;
 
 
-    public EmpEntity(Long id, Long fk_emp_id, LocalTime attend, Date date) {
+    public EmpEntity(Long id, Long fk_emp_id, String attend, Date work_date) {
         this.id=id;
         this.emp_id=fk_emp_id;
         this.attend=attend;
-        this.date=date;
+        this.work_date=work_date;
     }
 
-    public EmpEntity(Long fk_emp_id, LocalTime leave_work) {
+    public EmpEntity(Long fk_emp_id, String leave_work) {
         this.emp_id=fk_emp_id;
         this.leave_work=leave_work;
     }
@@ -69,11 +69,11 @@ public class EmpEntity {
         this.emp_id=fk_emp_id;
     }
 
-    public EmpEntity(Long id, Long fk_emp_id, LocalTime attend, LocalTime leave_work, Date date) {
+    public EmpEntity(Long id, Long fk_emp_id, String attend, String leave_work, Date work_date) {
         this.id=id;
         this.emp_id=fk_emp_id;
         this.attend=attend;
         this.leave_work = leave_work;
-        this.date=date;
+        this.work_date=work_date;
     }
 }

@@ -18,15 +18,15 @@ public class EmpService {
     @Autowired
     public EmpService(EmpHandler empHandler){this.empHandler=empHandler;}
 
-    public EmpDTO Attend(Long id, Long fk_emp_id, LocalTime attend, LocalTime leave_work
-            ,Date date) {
-        EmpEntity empEntity = empHandler.Attend(id,fk_emp_id,attend,leave_work,date);
+    public EmpDTO Attend(Long id, Long fk_emp_id, String attend, String leave_work
+            ,Date work_date) {
+        EmpEntity empEntity = empHandler.Attend(id,fk_emp_id,attend,leave_work,work_date);
 
-        EmpDTO empDTO = new EmpDTO(id,fk_emp_id,attend,date);
+        EmpDTO empDTO = new EmpDTO(id,fk_emp_id,attend,work_date);
         return empDTO;
     }
 
-    public EmpDTO leaveWork(Long emp_id, LocalTime leave_work){
+    public EmpDTO leaveWork(Long emp_id, String leave_work){
         EmpEntity empEntity = empHandler.leaveWork(emp_id,leave_work);
         EmpDTO empDTO = new EmpDTO(emp_id, leave_work);
         return empDTO;

@@ -22,7 +22,7 @@ public class EmpDAO {
         empRepository.save(empEntity);
         return empEntity;
     }
-    public EmpEntity LeaveWork(LocalTime leave_work, Long emp_id){
+    public EmpEntity LeaveWork(String leave_work, Long emp_id){
          EmpEntity empEntity= empRepository.setLeaveTime(leave_work,emp_id);
         return empEntity;
     }

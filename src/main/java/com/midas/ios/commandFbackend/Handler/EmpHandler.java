@@ -18,14 +18,14 @@ public class EmpHandler {
     @Autowired
     public EmpHandler(EmpDAO empDAO){ this.empDAO=empDAO; }
 
-    public EmpEntity Attend(Long id, Long fk_emp_id, LocalTime attend, LocalTime leave_work
-            ,Date date) {
-        EmpEntity empEntity = new EmpEntity(id,fk_emp_id,attend,leave_work,date);
+    public EmpEntity Attend(Long id, Long fk_emp_id, String attend, String leave_work
+            ,Date work_date) {
+        EmpEntity empEntity = new EmpEntity(id,fk_emp_id,attend,leave_work,work_date);
 
         return empDAO.Attend(empEntity);
     }
 
-    public EmpEntity leaveWork(Long fk_emp_id, LocalTime leave_work){
+    public EmpEntity leaveWork(Long fk_emp_id, String leave_work){
         EmpEntity empEntity = new EmpEntity(fk_emp_id, leave_work);
         return empDAO.LeaveWork(leave_work,fk_emp_id);
     }

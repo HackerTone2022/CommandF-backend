@@ -40,5 +40,5 @@ public interface EmpRepository extends JpaRepository<EmpEntity,Long> {
 
     //퇴근 시간 찍기
     @Query(value = "UPDATE emp SET leave_work= :leaveTime WHERE fk_emp_id = :emp_id  ", nativeQuery = true)
-    EmpEntity setLeaveTime(@Param("leaveTime") LocalTime leaveTime, @Param("emp_id")Long emp_id);
+    EmpEntity setLeaveTime(@Param("leaveTime") String leaveTime, @Param("emp_id")Long emp_id);
 }
