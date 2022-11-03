@@ -1,6 +1,6 @@
 package com.midas.ios.commandFbackend.Service;
 
-import com.midas.ios.commandFbackend.DTO.loginDTO;
+import com.midas.ios.commandFbackend.DTO.LoginDTO;
 import com.midas.ios.commandFbackend.Entity.loginEntity;
 import com.midas.ios.commandFbackend.Handler.loginHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +16,20 @@ public class loginService {
     }
 
 
-    public loginDTO saveUser(Long Id, String name, String password, String company_code, String team_code){
+    public LoginDTO saveUser(Long Id, String name, String password, String company_code, String team_code){
         loginEntity loginEntity = loginHandler.saveloginEntity(Id,name,password,company_code,team_code);
 
-        loginDTO loginDTO = new loginDTO(loginEntity.getId(),
+        LoginDTO loginDTO = new LoginDTO(loginEntity.getId(),
                 loginEntity.getName(), loginEntity.getPassword(), loginEntity.getCompany_code(), loginEntity.getTeam_code());
 
         return loginDTO;
     }
 
 
-    public loginDTO getUser(Long Id){
+    public LoginDTO getUser(Long Id){
         loginEntity loginEntity = loginHandler.getloginEntity(Id);
 
-        loginDTO loginDTO = new loginDTO(loginEntity.getId(),
+        LoginDTO loginDTO = new LoginDTO(loginEntity.getId(),
                 loginEntity.getName(), loginEntity.getPassword(), loginEntity.getCompany_code(), loginEntity.getTeam_code());
 
         return loginDTO;

@@ -9,9 +9,10 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class loginDTO {
+public class LoginDTO {
 
     @Id
     @Column(name = "emp_Id")

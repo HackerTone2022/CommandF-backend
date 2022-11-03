@@ -2,38 +2,41 @@ package com.midas.ios.commandFbackend.Controller;
 
 
 import com.midas.ios.commandFbackend.DTO.IdPasswordDTO;
-import com.midas.ios.commandFbackend.DTO.loginDTO;
+import com.midas.ios.commandFbackend.DTO.LoginDTO;
 import com.midas.ios.commandFbackend.Service.loginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 @Controller
 @RequestMapping(value = "/account")
 public class loginController {
 
+    @Autowired
     private com.midas.ios.commandFbackend.Service.loginService loginService;
+
 
     public loginController(loginService loginService){
         this.loginService=loginService;
     }
-    @GetMapping
-    @ResponseBody
+
+    @GetMapping("/home")
     public String Home(){
-        return "Home";
+        return "";
     }
 
     @GetMapping("/next")
-    @ResponseBody
     public String Next(){
-        return "Next";
+        return "";
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<loginDTO> createUserAccount(@Valid @RequestBody loginDTO loginDTO){
+    public ResponseEntity<LoginDTO> createUserAccount(@Valid @RequestBody LoginDTO loginDTO){
 
         Long Id = loginDTO.getId();
         String name = loginDTO.getName();
@@ -41,8 +44,7 @@ public class loginController {
         String company_code= loginDTO.getCompany_code();
         String team_code = loginDTO.getTeam_code();
 
-        loginDTO response = loginService.saveUser(Id, name, password, company_code, team_code);
-
+        LoginDTO response = loginService.saveUser(Id, name, password, company_code, team_code);
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
@@ -50,9 +52,14 @@ public class loginController {
     @PostMapping(value = "/get")
     public String login(@Valid @RequestBody IdPasswordDTO idPasswordDTO){
 
-        loginDTO loginDTO = loginService.getUser(idPasswordDTO.getId());
-        if(idPasswordDTO.getPassword()== loginDTO.getPassword()){return "redirect:/next";}
-        else{return "redirect:/account";}
+        LoginDTO loginDTO = loginService.getUser(idPasswordDTO.getId());
+        //System.out.println("idPasswordDTO: "+idPasswordDTO.getPassword());
+        //System.out.println("LoginDTO: "+loginDTO.getPassword());
+
+        if(Objects.equals(idPasswordDTO.getPassword(), loginDTO.getPassword()))
+        {return "redirect:/account/next";}
+
+        else{return "redirect:/account/Home";}
     }
 
 
