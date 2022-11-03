@@ -31,4 +31,11 @@ public class LoginDTO {
     @NotNull
     private String team_code;
 
+    public LoginDTO(String name, String password, String company_code, String team_code, Long id) {
+        this.name=name;
+        this.password=password;
+        this.company_code=company_code;
+        this.team_code=team_code;
+        this.Id=id;
+    }
 }

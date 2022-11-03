@@ -42,4 +42,11 @@ public class loginService {
                 loginEntity.getLogin_id(), loginEntity.getName(), loginEntity.getPassword(), loginEntity.getCompany_code(), loginEntity.getTeam_code());
         return loginDTO;
     }
+
+    public LoginDTO editUser(String name,String password,String company_code,String team_code,Long emp_id){
+        loginEntity loginEntity = loginHandler.editUser(name,password,company_code,team_code,emp_id);
+
+        LoginDTO loginDTO = new LoginDTO(name,password,company_code,team_code,emp_id);
+        return loginDTO;
+    }
 }

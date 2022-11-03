@@ -13,26 +13,18 @@ import javax.validation.constraints.NotNull;
 @Builder
 @Getter
 @NoArgsConstructor
-@Table(name = "useraccount")
-public class loginEntity {
-
+@Table(name = "admindetail")
+public class AdminEntity {
     @Id
-    @Column(name = "emp_Id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @NotNull
-    private String login_id;
+    private Long fk_emp_id_admin;
 
-    @NotNull
+    private String attend;
+    private String leave_work;
     private String name;
-    @NotNull
-    private String password;
-    @NotNull
-    private String company_code;
-    @NotNull
-    private String team_code;
-
-
-
+    private String work_date;
 }

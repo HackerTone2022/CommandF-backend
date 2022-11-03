@@ -31,4 +31,8 @@ public class loginHandler {
         return loginDAO.findByLoginId(login_id);
     }
 
+    public loginEntity editUser(String name,String password,String company_code,String team_code,Long emp_id){
+        return loginDAO.editUSer(name,password,company_code,team_code,emp_id);
+    }
+
 }

@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Collection;
 
 //UPDATE table_1 SET column_1 = 'x' WHERE column_2 = 'aa';
@@ -44,4 +45,5 @@ public interface EmpRepository extends JpaRepository<EmpEntity,Long> {
 
     @Query(value = "SELECT * FROM emp WHERE fk_emp_id=:emp_id AND work_date=:work_date", nativeQuery = true)
     EmpEntity getReferenceById(@Param("emp_id")Long emp_id, @Param("work_date")String work_date);
+
 }

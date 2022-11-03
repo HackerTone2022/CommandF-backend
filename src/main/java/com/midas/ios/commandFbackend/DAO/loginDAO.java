@@ -31,4 +31,9 @@ public class loginDAO {
         loginEntity loginEntity = loginRepository.findByLoginId(login_id);
         return loginEntity;
     }
+
+    public loginEntity editUSer(String name,String password,String company_code,String team_code,Long emp_id){
+        loginEntity loginEntity = loginRepository.editUser(name,password,company_code,team_code,emp_id);
+        return loginEntity;
+    }
 }
