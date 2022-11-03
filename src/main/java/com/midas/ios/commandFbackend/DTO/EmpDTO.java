@@ -1,0 +1,70 @@
+package com.midas.ios.commandFbackend.DTO;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalTime;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+public class EmpDTO {
+    @Id
+    @Column(name = "pk_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    @Column(name = "fk_emp_id")
+    private Long emp_id;
+
+    private LocalTime attend;
+    private LocalTime leave_work;
+
+    private Date date;
+
+
+
+    private boolean home;
+
+
+    private  boolean absent;
+
+
+    private  boolean leave;
+
+
+
+    private boolean home_apply;
+
+
+    private  boolean absent_apply;
+
+
+    private  boolean leave_apply;
+
+    public EmpDTO(Long id, Long fk_emp_id, LocalTime attend, Date date) {
+        this.id=id;
+        this.emp_id=fk_emp_id;
+        this.attend=attend;
+        this.date=date;
+    }
+
+    public EmpDTO(Long emp_id, LocalTime leave_work) {
+        this.emp_id=emp_id;
+        this.leave_work=leave_work;
+    }
+    public EmpDTO(Long fk_emp_id){
+        this.emp_id=fk_emp_id;
+    }
+}

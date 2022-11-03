@@ -17,15 +17,18 @@ public class loginHandler {
     }
 
 
-    public loginEntity saveloginEntity(Long Id, String name, String password, String company_code, String team_code){
-        loginEntity loginEntity = new loginEntity(Id,name,password,company_code,team_code);
+    public loginEntity saveloginEntity(Long Id, String login_id,String name, String password, String company_code, String team_code){
+        loginEntity loginEntity = new loginEntity(Id,login_id,name,password,company_code,team_code);
 
         return loginDAO.saveUser(loginEntity);
     }
 
-
     public loginEntity getloginEntity(Long Id){
         return loginDAO.getUser(Id);
+    }
+
+    public loginEntity findByLoginId(String login_id){
+        return loginDAO.findByLoginId(login_id);
     }
 
 }

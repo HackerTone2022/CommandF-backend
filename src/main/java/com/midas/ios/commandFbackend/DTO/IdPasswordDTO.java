@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 public class IdPasswordDTO {
 
     @NotNull
-    private Long Id;
+    private String login_id;
     @NotNull
     private String password;
 }

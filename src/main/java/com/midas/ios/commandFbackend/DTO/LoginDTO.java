@@ -20,6 +20,9 @@ public class LoginDTO {
     private Long Id;
 
     @NotNull
+    private String login_id;
+
+    @NotNull
     private String name;
     @NotNull
     private String password;

@@ -16,11 +16,11 @@ public class loginService {
     }
 
 
-    public LoginDTO saveUser(Long Id, String name, String password, String company_code, String team_code){
-        loginEntity loginEntity = loginHandler.saveloginEntity(Id,name,password,company_code,team_code);
+    public LoginDTO saveUser(Long Id, String login_id,String name, String password, String company_code, String team_code){
+        loginEntity loginEntity = loginHandler.saveloginEntity(Id,login_id,name,password,company_code,team_code);
 
         LoginDTO loginDTO = new LoginDTO(loginEntity.getId(),
-                loginEntity.getName(), loginEntity.getPassword(), loginEntity.getCompany_code(), loginEntity.getTeam_code());
+                loginEntity.getLogin_id(), loginEntity.getName(), loginEntity.getPassword(), loginEntity.getCompany_code(), loginEntity.getTeam_code());
 
         return loginDTO;
     }
@@ -30,8 +30,16 @@ public class loginService {
         loginEntity loginEntity = loginHandler.getloginEntity(Id);
 
         LoginDTO loginDTO = new LoginDTO(loginEntity.getId(),
-                loginEntity.getName(), loginEntity.getPassword(), loginEntity.getCompany_code(), loginEntity.getTeam_code());
+                loginEntity.getLogin_id(), loginEntity.getName(), loginEntity.getPassword(), loginEntity.getCompany_code(), loginEntity.getTeam_code());
 
+        return loginDTO;
+    }
+
+    public LoginDTO findByLoginId(String login_id){
+        loginEntity loginEntity = loginHandler.findByLoginId(login_id);
+
+        LoginDTO loginDTO = new LoginDTO(loginEntity.getId(),
+                loginEntity.getLogin_id(), loginEntity.getName(), loginEntity.getPassword(), loginEntity.getCompany_code(), loginEntity.getTeam_code());
         return loginDTO;
     }
 }

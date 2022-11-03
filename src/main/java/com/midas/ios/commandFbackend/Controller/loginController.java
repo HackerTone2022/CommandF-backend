@@ -17,10 +17,9 @@ import java.util.Objects;
 @RequestMapping(value = "/account")
 public class loginController {
 
+    private loginService loginService;
+
     @Autowired
-    private com.midas.ios.commandFbackend.Service.loginService loginService;
-
-
     public loginController(loginService loginService){
         this.loginService=loginService;
     }
@@ -39,12 +38,13 @@ public class loginController {
     public ResponseEntity<LoginDTO> createUserAccount(@Valid @RequestBody LoginDTO loginDTO){
 
         Long Id = loginDTO.getId();
+        String login_id = loginDTO.getLogin_id();
         String name = loginDTO.getName();
         String password = loginDTO.getPassword();
         String company_code= loginDTO.getCompany_code();
         String team_code = loginDTO.getTeam_code();
 
-        LoginDTO response = loginService.saveUser(Id, name, password, company_code, team_code);
+        LoginDTO response = loginService.saveUser(Id, login_id, name, password, company_code, team_code);
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
@@ -52,7 +52,7 @@ public class loginController {
     @PostMapping(value = "/get")
     public String login(@Valid @RequestBody IdPasswordDTO idPasswordDTO){
 
-        LoginDTO loginDTO = loginService.getUser(idPasswordDTO.getId());
+        LoginDTO loginDTO = loginService.findByLoginId(idPasswordDTO.getLogin_id());
         //System.out.println("idPasswordDTO: "+idPasswordDTO.getPassword());
         //System.out.println("LoginDTO: "+loginDTO.getPassword());
 

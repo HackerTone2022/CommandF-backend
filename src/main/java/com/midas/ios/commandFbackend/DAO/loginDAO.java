@@ -26,4 +26,9 @@ public class loginDAO {
         loginEntity loginEntity = loginRepository.getReferenceById(Id);
         return loginEntity;
     }
+
+    public loginEntity findByLoginId(String login_id){
+        loginEntity loginEntity = loginRepository.findByLoginId(login_id);
+        return loginEntity;
+    }
 }
