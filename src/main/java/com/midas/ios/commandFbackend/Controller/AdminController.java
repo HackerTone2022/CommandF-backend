@@ -20,13 +20,13 @@ public class AdminController {
         this.empService=empService;
         this.loginService=loginService;
     }
-    @PostMapping("/emp/{emp_id}")
+    @PostMapping("/emp/{work_date}/{emp_id}")
     @ResponseBody
-    public AdminDTO LookupEmp(@PathVariable("emp_id") Long emp_id){
+    public AdminDTO LookupEmp(@PathVariable("emp_id") Long emp_id,@PathVariable("work_date")String work_date){
 
         LoginDTO loginDTO= loginService.getUser(emp_id);
 
-        EmpDTO empDTO=empService.getUser(emp_id);
+        EmpDTO empDTO=empService.getUser(emp_id,work_date);
 
         AdminDTO adminDTO= new AdminDTO(empDTO.getEmp_id(), loginDTO.getName(), empDTO.getAttend(),empDTO.getLeave_work());
         System.out.println(adminDTO.toString());

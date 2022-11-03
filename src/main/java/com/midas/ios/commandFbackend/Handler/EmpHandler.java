@@ -44,8 +44,8 @@ public class EmpHandler {
         return empDAO.applyLeave(fk_emp_id);
     }
 
-    public EmpEntity getEmpEntity(Long emp_id){
-        return empDAO.getEmp(emp_id);
+    public EmpEntity getEmpEntity(Long emp_id,String work_date){
+        return empDAO.getEmp(emp_id,work_date);
     }
 
 }

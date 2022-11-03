@@ -50,8 +50,8 @@ public class EmpService {
         return empDTO;
     }
 
-    public EmpDTO getUser(Long emp_id){
-        EmpEntity empEntity = empHandler.getEmpEntity(emp_id);
+    public EmpDTO getUser(Long emp_id,String work_date){
+        EmpEntity empEntity = empHandler.getEmpEntity(emp_id,work_date);
 
         EmpDTO empDTO = new EmpDTO(empEntity.getId(),empEntity.getEmp_id(), empEntity.getAttend(),empEntity.getLeave_work());
 

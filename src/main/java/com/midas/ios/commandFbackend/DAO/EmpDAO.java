@@ -40,8 +40,8 @@ public class EmpDAO {
         EmpEntity empEntity=empRepository.applyLeave(emp_id);
         return empEntity;
     }
-    public EmpEntity getEmp(Long emp_id) {
-        EmpEntity empEntity = empRepository.getReferenceById(emp_id);
+    public EmpEntity getEmp(Long emp_id, String work_date) {
+        EmpEntity empEntity = empRepository.getReferenceById(emp_id,work_date);
         return empEntity;
     }
 }

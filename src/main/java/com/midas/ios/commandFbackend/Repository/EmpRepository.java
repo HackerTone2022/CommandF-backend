@@ -42,5 +42,6 @@ public interface EmpRepository extends JpaRepository<EmpEntity,Long> {
     @Query(value = "UPDATE emp SET leave_work= :leaveTime WHERE fk_emp_id = :emp_id  ", nativeQuery = true)
     EmpEntity setLeaveTime(@Param("leaveTime") String leaveTime, @Param("emp_id")Long emp_id);
 
-
+    @Query(value = "SELECT * FROM emp WHERE fk_emp_id=:emp_id AND work_date=:work_date", nativeQuery = true)
+    EmpEntity getReferenceById(@Param("emp_id")Long emp_id, @Param("work_date")String work_date);
 }
