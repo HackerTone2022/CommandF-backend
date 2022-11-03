@@ -2,6 +2,7 @@ package com.midas.ios.commandFbackend.DAO;
 
 
 import com.midas.ios.commandFbackend.Entity.EmpEntity;
+import com.midas.ios.commandFbackend.Entity.loginEntity;
 import com.midas.ios.commandFbackend.Repository.EmpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,10 @@ public class EmpDAO {
     }
     public EmpEntity applyLeave(Long emp_id){
         EmpEntity empEntity=empRepository.applyLeave(emp_id);
+        return empEntity;
+    }
+    public EmpEntity getEmp(Long emp_id) {
+        EmpEntity empEntity = empRepository.getReferenceById(emp_id);
         return empEntity;
     }
 }

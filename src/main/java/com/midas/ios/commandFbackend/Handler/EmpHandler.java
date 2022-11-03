@@ -2,6 +2,7 @@ package com.midas.ios.commandFbackend.Handler;
 
 import com.midas.ios.commandFbackend.DAO.EmpDAO;
 import com.midas.ios.commandFbackend.Entity.EmpEntity;
+import com.midas.ios.commandFbackend.Entity.loginEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,6 +42,10 @@ public class EmpHandler {
     public EmpEntity applyLeave(Long fk_emp_id){
         EmpEntity empEntity = new EmpEntity(fk_emp_id);
         return empDAO.applyLeave(fk_emp_id);
+    }
+
+    public EmpEntity getEmpEntity(Long emp_id){
+        return empDAO.getEmp(emp_id);
     }
 
 }

@@ -2,7 +2,9 @@ package com.midas.ios.commandFbackend.Service;
 
 import com.midas.ios.commandFbackend.DAO.EmpDAO;
 import com.midas.ios.commandFbackend.DTO.EmpDTO;
+import com.midas.ios.commandFbackend.DTO.LoginDTO;
 import com.midas.ios.commandFbackend.Entity.EmpEntity;
+import com.midas.ios.commandFbackend.Entity.loginEntity;
 import com.midas.ios.commandFbackend.Handler.EmpHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +47,14 @@ public class EmpService {
     public EmpDTO applyLeave(Long fk_emp_id){
         EmpEntity empEntity = empHandler.applyLeave(fk_emp_id);
         EmpDTO empDTO = new EmpDTO(fk_emp_id);
+        return empDTO;
+    }
+
+    public EmpDTO getUser(Long emp_id){
+        EmpEntity empEntity = empHandler.getEmpEntity(emp_id);
+
+        EmpDTO empDTO = new EmpDTO(empEntity.getId(),empEntity.getEmp_id(), empEntity.getAttend(),empEntity.getLeave_work());
+
         return empDTO;
     }
 }
