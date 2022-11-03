@@ -1,11 +1,13 @@
-package com.midas.ios.commandFbackend.login;
+package com.midas.ios.commandFbackend.DAO;
 
+import com.midas.ios.commandFbackend.Entity.loginEntity;
+import com.midas.ios.commandFbackend.Repository.loginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class loginDAO {
-    loginRepository loginRepository;
+    com.midas.ios.commandFbackend.Repository.loginRepository loginRepository;
 
     @Autowired
     public loginDAO(loginRepository loginRepository){

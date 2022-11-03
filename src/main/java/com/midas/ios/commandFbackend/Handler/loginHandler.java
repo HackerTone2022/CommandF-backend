@@ -1,5 +1,7 @@
-package com.midas.ios.commandFbackend.login;
+package com.midas.ios.commandFbackend.Handler;
 
+import com.midas.ios.commandFbackend.DAO.loginDAO;
+import com.midas.ios.commandFbackend.Entity.loginEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class loginHandler {
-    loginDAO loginDAO;
+    com.midas.ios.commandFbackend.DAO.loginDAO loginDAO;
 
     @Autowired
     public loginHandler(loginDAO loginDAO){

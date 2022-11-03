@@ -1,7 +1,9 @@
-package com.midas.ios.commandFbackend.login;
+package com.midas.ios.commandFbackend.Controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.midas.ios.commandFbackend.DTO.IdPasswordDTO;
+import com.midas.ios.commandFbackend.DTO.loginDTO;
+import com.midas.ios.commandFbackend.Service.loginService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,7 @@ import javax.validation.Valid;
 @RequestMapping(value = "/account")
 public class loginController {
 
-    private loginService loginService;
+    private com.midas.ios.commandFbackend.Service.loginService loginService;
 
     public loginController(loginService loginService){
         this.loginService=loginService;

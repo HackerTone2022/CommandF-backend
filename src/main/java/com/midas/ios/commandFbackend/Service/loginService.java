@@ -1,11 +1,14 @@
-package com.midas.ios.commandFbackend.login;
+package com.midas.ios.commandFbackend.Service;
 
+import com.midas.ios.commandFbackend.DTO.loginDTO;
+import com.midas.ios.commandFbackend.Entity.loginEntity;
+import com.midas.ios.commandFbackend.Handler.loginHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class loginService {
-    loginHandler loginHandler;
+    com.midas.ios.commandFbackend.Handler.loginHandler loginHandler;
 
     @Autowired
     public loginService(loginHandler loginHandler){
@@ -13,7 +16,7 @@ public class loginService {
     }
 
 
-    public loginDTO saveUser(Long Id,String name,String password,String company_code, String team_code){
+    public loginDTO saveUser(Long Id, String name, String password, String company_code, String team_code){
         loginEntity loginEntity = loginHandler.saveloginEntity(Id,name,password,company_code,team_code);
 
         loginDTO loginDTO = new loginDTO(loginEntity.getId(),

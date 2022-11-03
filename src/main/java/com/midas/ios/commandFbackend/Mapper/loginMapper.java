@@ -1,4 +1,4 @@
-package com.midas.ios.commandFbackend.login;
+package com.midas.ios.commandFbackend.Mapper;
 
 
 import javax.persistence.Column;
